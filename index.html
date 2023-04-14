@@ -1,2 +1,50 @@
-hello world
-today is monday
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lauren's Labs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <header class="header">
+            <h1>Lauren's Labs</h1>
+        </header>
+        <div class="container">
+            <div class="left_section box">
+                <h3>Event Search by Date</h3>
+        <form>
+            
+            <button type="submit" id="load-btn">Load Data</button>
+            <input type="text" id="search-date" placeholder="Search by year (YYYY)">
+        </form>
+        <div id="results"></div>
+                </form>
+            </div>
+            <div id ="breach-table-box">
+                <table id="breach-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Domain</th>
+                        <th>Breach Date</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody id="breach-table-body">
+                    </tbody>
+                  </table>
+                </div> 
+            </div>
+        </div>
+    </div>
+<footer class = "footer">
+    <p> GitHub: <a href="http://github.com/Laurenml" > Laurenml</a></p>
+</footer>
+<script src="./script.js"></script>
+</body>
+</html>
+
