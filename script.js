@@ -84,19 +84,20 @@ async function getBreaches() {
   }
   
 async function mainEvent(){
+  populateTable()
   const loadDataBtn = document.querySelector('#load-data-btn');
   const loadGraphBtn = document.querySelector('#load-graph-btn');
-  } 
+  
 
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
+
 
 //const loadDataBtn = document.querySelector('#load-data-btn');
 loadDataBtn.addEventListener('click', populateTable);
     console.log("clicked load data button");
 
-document.addEventListener('DOMContentLoaded', () => {
-    populateTable();  
-    });
+//document.addEventListener('DOMContentLoaded', () => {
+   // populateTable();  
+   // });
 
 //const loadGraphBtn = document.querySelector('#load-graph-btn');
 loadGraphBtn.addEventListener('click', function() {
@@ -104,6 +105,6 @@ loadGraphBtn.addEventListener('click', function() {
     const breaches1 = JSON.parse(localStorage.getItem('breaches'));
     createChart(breaches1);
   });
-
-
-
+}
+  
+  document.addEventListener('DOMContentLoaded', async () => mainEvent());
