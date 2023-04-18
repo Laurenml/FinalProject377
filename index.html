@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lauren's Labs</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     
@@ -15,11 +17,11 @@
         </header>
         <div class="container">
             <div class="left_section box">
-                <h3>Event Search by Date</h3>
+                <h3>Display 15 Random Breach Events</h3>
         <form>
             
-            <button id="load-data-btn">Load Data</button>
-            <input type="text" id="search-date" placeholder="Search by year (YYYY)">
+            <button id="load-data-btn"  >Refresh Data</button>
+            <button id="load-graph-btn">Load Graph</button>
         </form>
         <div id="results"></div>
                 </form>
@@ -36,9 +38,10 @@
                     </thead>
                     <tbody id="breach-table-body">
                     </tbody>
-                  </table>
-                </div> 
+                </table>
+            </div> 
             </div>
+                <canvas id="breach-chart"></canvas>
         </div>
     </div>
 <footer class = "footer">
