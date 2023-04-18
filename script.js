@@ -83,7 +83,14 @@ async function getBreaches() {
     });
   }
   
-const loadDataBtn = document.querySelector('#load-data-btn');
+async function mainEvent(){
+  const loadDataBtn = document.querySelector('#load-data-btn');
+  const loadGraphBtn = document.querySelector('#load-graph-btn');
+  } 
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());
+
+//const loadDataBtn = document.querySelector('#load-data-btn');
 loadDataBtn.addEventListener('click', populateTable);
     console.log("clicked load data button");
 
@@ -91,11 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
     populateTable();  
     });
 
-const loadGraphBtn = document.querySelector('#load-graph-btn');
+//const loadGraphBtn = document.querySelector('#load-graph-btn');
 loadGraphBtn.addEventListener('click', function() {
     console.log("clicked load graph button")
     const breaches1 = JSON.parse(localStorage.getItem('breaches'));
     createChart(breaches1);
   });
+
 
 
