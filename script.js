@@ -10,7 +10,7 @@ async function getBreaches() {
     const breaches = await getBreaches();
     const tbody = document.querySelector('#breach-table tbody');
     tbody.innerHTML = ''; // clear existing table rows
-    const selectedBreaches = getRandomBreaches(breaches, 15); // select 15 random breaches
+    const selectedBreaches = getRandomBreaches(breaches, 5); // select 5 random breaches
     for (const breach of selectedBreaches) {
       const row = tbody.insertRow();
       const nameCell = row.insertCell();
@@ -31,7 +31,7 @@ async function getBreaches() {
   }
   
 
-  async function createChart() {
+  function createChart(breaches) {
 
     // Count the number of breaches per year
     const counts = {};
@@ -45,7 +45,7 @@ async function getBreaches() {
     const countsData = years.map(year => counts[year]);
   
     // Create the bar chart
-    const chartCanvas = document.querySelector('#breach-chart');
+    const chartCanvas = document.getElementById("breach-chart");//document.querySelector('#breach-chart');
     const chart = new Chart(chartCanvas, {
       type: 'bar',
       data: {
@@ -92,16 +92,20 @@ async function mainEvent(){
 
 
 //const loadDataBtn = document.querySelector('#load-data-btn');
-loadDataBtn.addEventListener('click', populateTable);
+loadDataBtn.addEventListener('click', function(x){//populateTable);
     console.log("clicked load data button");
+    x.preventDefault();
+    populateTable()
+});
 
 //document.addEventListener('DOMContentLoaded', () => {
    // populateTable();  
    // });
 
 //const loadGraphBtn = document.querySelector('#load-graph-btn');
-loadGraphBtn.addEventListener('click', function() {
+loadGraphBtn.addEventListener('click', function(x) {
     console.log("clicked load graph button")
+    x.preventDefault();
     const breaches1 = JSON.parse(localStorage.getItem('breaches'));
     createChart(breaches1);
   });
