@@ -6,25 +6,40 @@ async function getBreaches() {
     return data;
   }
 
-  async function populateTable() {
-    const breaches = await getBreaches();
-    const tbody = document.querySelector('#breach-table tbody');
-    tbody.innerHTML = ''; // clear existing table rows
-    const selectedBreaches = getRandomBreaches(breaches, 5); // select 5 random breaches
-    for (const breach of selectedBreaches) {
-      const row = tbody.insertRow();
-      const nameCell = row.insertCell();
-      const domainCell = row.insertCell();
-      const dateCell = row.insertCell();
-      const descriptionCell = row.insertCell();
-      nameCell.textContent = breach.Name;
-      domainCell.textContent = breach.Domain;
-      dateCell.textContent = breach.BreachDate;
-      descriptionCell.textContent = breach.Description;
-    }
-    localStorage.setItem('breaches', JSON.stringify(breaches));
+
+
+async function populateTable() {
+  const breaches = await getBreaches();
+  const tbody = document.querySelector('#breach-table tbody');
+  const searchInput = document.querySelector('#search-input');
+  const searchValue = searchInput.value;
+  tbody.innerHTML = ''; // clear existing table rows
+
+  let selectedBreaches;
+  if (searchValue.trim() === '') {
+    selectedBreaches = getRandomBreaches(breaches, 5); // select 5 random breaches from entire data set
+  } else {
+    const filteredBreaches = breaches.filter(breach => breach.BreachDate.includes(searchValue));
+    selectedBreaches = getRandomBreaches(filteredBreaches, 25); // select 5 random breaches from filtered data
   }
-  
+
+  for (const breach of selectedBreaches) {
+    const row = tbody.insertRow();
+    const nameCell = row.insertCell();
+    const domainCell = row.insertCell();
+    const dateCell = row.insertCell();
+    const descriptionCell = row.insertCell();
+    nameCell.textContent = breach.Name;
+    domainCell.textContent = breach.Domain;
+    dateCell.textContent = breach.BreachDate;
+    descriptionCell.textContent = breach.Description;
+  }
+  localStorage.setItem('breaches', JSON.stringify(breaches));
+}
+
+
+
+
   function getRandomBreaches(breaches, count) {
     const shuffled = breaches.sort(() => 0.5 - Math.random()); // shuffle the breaches
     return shuffled.slice(0, count); // select the first `count` breaches
@@ -87,6 +102,11 @@ async function mainEvent(){
   populateTable()
   const loadDataBtn = document.querySelector('#load-data-btn');
   const loadGraphBtn = document.querySelector('#load-graph-btn');
+  //const filterBtn = document.querySelector('#filter-btn');
+  const searchInput = document.querySelector('#search-input');
+  //const yearInput = document.querySelector('#year-input');
+
+  
   
 
 
@@ -109,6 +129,15 @@ loadGraphBtn.addEventListener('click', function(x) {
     const breaches1 = JSON.parse(localStorage.getItem('breaches'));
     createChart(breaches1);
   });
+
+  searchInput.addEventListener('input', function() {
+    populateTable();
+  });
+
+  //yearInput.addEventListener('input', function() {
+   // populateTable();
+ // });
+
 }
   
   document.addEventListener('DOMContentLoaded', async () => mainEvent());
