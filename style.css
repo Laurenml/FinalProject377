@@ -1,14 +1,9 @@
-* /* CSS instructions for Lab 5 */
-/* Bring in your successful CSS from week 4 */
+
 
 * {
     box-sizing: border-box;
   }
   
-  /* 
-    These rules apply to actual HTML elements with no labelling!
-    So: they style the tags directly
-  */
 
   table {
     border-collapse: collapse;
@@ -68,14 +63,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
   
-    /* these are specific to different browsers 
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    */
+   
   }
   
   body {
@@ -136,15 +124,10 @@
   }
   
   
-  /*
-    This rule implies that the H1 tag lives within another HTML tag
-    It "inherits" some rules from the above
-    Those rules won't apply to an h1 that's outside a block with the class of 'header'
-  */
-  
+
   .header h1 {
     display: block;
-    /* this will push other blocks out of the way */
+    
   
     /* colors */
     background-color: #6a5151;
@@ -162,14 +145,7 @@
   }
   
   
-  /*
-    Rules can be combined on a block to apply the 'cascade' in order
-    So you can use two classnames in a single class attribute
-    like: <div class="box section">
-  
-    Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
-    And will be what displays in your client
-  */
+
   
   .box {
     background-color: rgba(239, 239, 239, 0.40);
@@ -366,8 +342,3 @@
       }
   }
 
-  
-/*
-    Add a flexbox class that will keep two buttons nicely styled next to one another
-    under your HTML form and input field
- */

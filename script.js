@@ -7,17 +7,16 @@ async function getBreaches() {
   }
 
 
-
 async function populateTable() {
   const breaches = await getBreaches();
   const tbody = document.querySelector('#breach-table tbody');
   const searchInput = document.querySelector('#search-input');
   const searchValue = searchInput.value;
-  tbody.innerHTML = ''; // clear existing table rows
+  tbody.innerHTML = ''; // clear the existing table rows
 
   let selectedBreaches;
   if (searchValue.trim() === '') {
-    selectedBreaches = getRandomBreaches(breaches, 5); // select 5 random breaches from entire data set
+    selectedBreaches = getRandomBreaches(breaches, 5); // get 5 random breaches from entire data set
   } else {
     const filteredBreaches = breaches.filter(breach => breach.BreachDate.includes(searchValue));
     selectedBreaches = getRandomBreaches(filteredBreaches, 25); // select 5 random breaches from filtered data
@@ -38,10 +37,8 @@ async function populateTable() {
 }
 
 
-
-
   function getRandomBreaches(breaches, count) {
-    const shuffled = breaches.sort(() => 0.5 - Math.random()); // shuffle the breaches
+    const shuffled = breaches.sort(() => 0.5 - Math.random()); 
     return shuffled.slice(0, count); // select the first `count` breaches
   }
   
@@ -60,7 +57,7 @@ async function populateTable() {
     const countsData = years.map(year => counts[year]);
   
     // Create the bar chart
-    const chartCanvas = document.getElementById("breach-chart");//document.querySelector('#breach-chart');
+    const chartCanvas = document.getElementById("breach-chart");
     const chart = new Chart(chartCanvas, {
       type: 'bar',
       data: {
@@ -102,27 +99,16 @@ async function mainEvent(){
   populateTable()
   const loadDataBtn = document.querySelector('#load-data-btn');
   const loadGraphBtn = document.querySelector('#load-graph-btn');
-  //const filterBtn = document.querySelector('#filter-btn');
   const searchInput = document.querySelector('#search-input');
-  //const yearInput = document.querySelector('#year-input');
-
-  
   
 
 
-
-//const loadDataBtn = document.querySelector('#load-data-btn');
-loadDataBtn.addEventListener('click', function(x){//populateTable);
+loadDataBtn.addEventListener('click', function(x){
     console.log("clicked load data button");
     x.preventDefault();
     populateTable()
 });
 
-//document.addEventListener('DOMContentLoaded', () => {
-   // populateTable();  
-   // });
-
-//const loadGraphBtn = document.querySelector('#load-graph-btn');
 loadGraphBtn.addEventListener('click', function(x) {
     console.log("clicked load graph button")
     x.preventDefault();
@@ -133,10 +119,6 @@ loadGraphBtn.addEventListener('click', function(x) {
   searchInput.addEventListener('input', function() {
     populateTable();
   });
-
-  //yearInput.addEventListener('input', function() {
-   // populateTable();
- // });
 
 }
   
